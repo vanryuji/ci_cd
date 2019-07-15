@@ -9,6 +9,10 @@ pipelines:
           script:
             # Mysql
             - service mysql start
+            - mysql < /ec.sql
+            - mysql < /common.sql
+            - mysql < /user_glowmee.sql
+            - mysql < /privilege.sql
 
 
             # Python packages
