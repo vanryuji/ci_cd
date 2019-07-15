@@ -2,5 +2,4 @@
 
 
 # Article
-### CD
-* http://www.nextree.co.kr/p3452/
+* CD : http://www.nextree.co.kr/p3452/
