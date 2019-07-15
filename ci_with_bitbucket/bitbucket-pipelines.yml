@@ -1,0 +1,30 @@
+image: vanryuji/hello:latest
+
+pipelines:
+  branches:
+    develop:
+      - step:
+          caches:
+            - pip
+          script:
+            # Mysql
+            # TODO : It's better to execute at docker startup
+            - service mysql start
+            - mysql < /ec.sql
+            - mysql < /common.sql
+            - mysql < /user_glowmee.sql
+            - mysql < /privilege.sql
+
+
+            # Python packages
+            - pip3 install -r requirements.txt
+
+
+            # PEP8
+            - flake8 . --ignore=E,W,F
+
+
+            # TDD
+            - export GLOWPICKAPI_DEBUG=True
+            - cp /common.ini $BITBUCKET_CLONE_DIR/settings/configs
+            - python3 $BITBUCKET_CLONE_DIR/manage.py test test
