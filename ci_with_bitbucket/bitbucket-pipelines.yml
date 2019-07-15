@@ -1,4 +1,4 @@
-image: vanryuji/hello:latest
+image: mysql:5.6.40 # your image
 
 pipelines:
   branches:
@@ -8,12 +8,7 @@ pipelines:
             - pip
           script:
             # Mysql
-            # TODO : It's better to execute at docker startup
             - service mysql start
-            - mysql < /ec.sql
-            - mysql < /common.sql
-            - mysql < /user_glowmee.sql
-            - mysql < /privilege.sql
 
 
             # Python packages
@@ -21,10 +16,9 @@ pipelines:
 
 
             # PEP8
-            - flake8 . --ignore=E,W,F
+            - flake8 .
 
 
             # TDD
-            - export GLOWPICKAPI_DEBUG=True
             - cp /common.ini $BITBUCKET_CLONE_DIR/settings/configs
             - python3 $BITBUCKET_CLONE_DIR/manage.py test test
