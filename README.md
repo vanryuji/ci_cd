@@ -2,5 +2,5 @@
 
 
 # Article
-### CI
+### CD
 * http://www.nextree.co.kr/p3452/
