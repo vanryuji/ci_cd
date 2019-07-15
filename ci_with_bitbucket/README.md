@@ -33,7 +33,7 @@ Bitbucket Pipeline을 이용해서 Python용 CI 서버 구축
 * Container :
   * CI가 실행되는 docker 환경
   * custom docker image
-  * python3.5, mysql5.6 등의 설치
+  * python3.5, mysql5.6 등 설치
 
 
 # Reference
